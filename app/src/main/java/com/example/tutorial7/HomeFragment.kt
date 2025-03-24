@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +37,19 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_home, container, false)
+        val imageView:ImageView = rootView.findViewById(R.id.imageView)
+
+        imageView.setOnClickListener{
+            Toast.makeText(requireActivity(), "Home Button Clicked", Toast.LENGTH_LONG).show()
+        }
+
+        val viewModel = ViewModelProvider(requireActivity())[FragmentViewModel::class.java]
+        viewModel.backgroundColor.observe(requireActivity()){
+            rootView.setBackgroundResource(it)
+        }
+
+        return rootView
     }
 
     companion object {

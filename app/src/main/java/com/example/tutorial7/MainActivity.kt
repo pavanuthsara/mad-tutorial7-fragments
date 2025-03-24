@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val button: Button = findViewById(R.id.button)
+        val button: Button = findViewById(R.id.button3)
         val button2:Button = findViewById(R.id.button2)
 
         button.setOnClickListener{
